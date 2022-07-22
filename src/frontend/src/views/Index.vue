@@ -106,7 +106,10 @@
                       :key="ingredient.id"
                       class="ingredients__item"
                     >
-                      <span class="filling filling--mushrooms">
+                      <span
+                        class="filling"
+                        :class="`filling--${ingredient.type}`"
+                      >
                         {{ ingredient.name }}
                       </span>
 
@@ -173,6 +176,7 @@
 import pizza from "@/static/pizza.json";
 import misc from "@/static/misc.json";
 import user from "@/static/user.json";
+import { formatFilling } from "@/common/helpers.js";
 
 export default {
   name: "IndexHome",
@@ -185,7 +189,7 @@ export default {
   },
   computed: {
     ingredients() {
-      return this.pizza.ingredients;
+      return formatFilling(this.pizza.ingredients);
     },
     doughs() {
       return this.pizza.dough;

@@ -1,4 +1,3 @@
-<script>
 const setFillingType = (item) => {
   switch (item) {
     case "Грибы":
@@ -29,8 +28,17 @@ const setFillingType = (item) => {
       return "mozzarella";
     case "Пармезан":
       return "parmesan";
-    case "Блю чиз":
+
+    default:
       return "blue_cheese";
   }
 };
-</script>
+
+export const formatFilling = (arr) => {
+  return arr.map((el) => {
+    return {
+      ...el,
+      type: setFillingType(el.name),
+    };
+  });
+};
